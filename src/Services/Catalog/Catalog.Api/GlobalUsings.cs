@@ -1,0 +1,13 @@
+﻿global using MongoDB.Bson.Serialization.Attributes;
+global using MongoDB.Bson;
+global using Microsoft.OpenApi.Models;
+global using Catalog.Api.Entities;
+global using MongoDB.Driver;
+global using Catalog.Api.Interfaces;
+global using Catalog.Api.Data;
+global using Catalog.Api.Repositories;
+global using Microsoft.AspNetCore.Mvc;
+global using System.Net;
+global using AutoMapper;
+global using Catalog.Api.InputModels;
+global using Catalog.Api.ViewModels;
