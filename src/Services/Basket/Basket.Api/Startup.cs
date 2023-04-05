@@ -17,6 +17,11 @@ public class Startup
         {
             c.SwaggerDoc("v1", new OpenApiInfo { Title = "Basket.API", Version = "v1" });
         });
+
+        services.AddStackExchangeRedisCache(opt =>
+        {
+            opt.Configuration = Configuration.GetValue<string>("CacheSettings:ConnectionString");
+        });
     }
 
     public void Configure(IApplicationBuilder app, IWebHostEnvironment env)

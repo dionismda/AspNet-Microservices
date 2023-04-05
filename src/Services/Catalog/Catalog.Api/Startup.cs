@@ -19,7 +19,7 @@ public class Startup
         });
 
 
-        services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
+        services.AddAutoMapper(typeof(Startup));
         services.AddSingleton<ICatalogContext, CatalogContext>();
         services.AddScoped<IProductRepository, ProductRepository>();
     }
