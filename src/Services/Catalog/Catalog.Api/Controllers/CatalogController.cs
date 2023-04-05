@@ -24,6 +24,7 @@ public class CatalogController : ControllerBase
     public async Task<ActionResult<IEnumerable<ProductViewModel>>> GetProducts()
     {
         var products = await _repository.GetProducts();
+
         return Ok(_mapper.Map<IEnumerable<ProductViewModel>>(products));
     }
 
@@ -33,11 +34,13 @@ public class CatalogController : ControllerBase
     public async Task<ActionResult<ProductViewModel>> GetProductById(string id)
     {
         var product = await _repository.GetProduct(id);
+
         if (product == null)
         {
             _logger.LogError($"Product with id: {id}, not found.");
             return NotFound();
         }
+
         return Ok(_mapper.Map<ProductViewModel>(product));
     }
 
@@ -47,6 +50,7 @@ public class CatalogController : ControllerBase
     public async Task<ActionResult<IEnumerable<ProductViewModel>>> GetProductByCategory(string category)
     {
         var products = await _repository.GetProductByCategory(category);
+
         return Ok(_mapper.Map<IEnumerable<ProductViewModel>>(products));
     }
 
