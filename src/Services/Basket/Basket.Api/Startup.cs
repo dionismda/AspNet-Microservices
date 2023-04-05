@@ -1,4 +1,4 @@
-﻿namespace Catalog.API;
+﻿namespace Basket.Api;
 
 public class Startup
 {
@@ -15,13 +15,13 @@ public class Startup
         services.AddControllers();
         services.AddSwaggerGen(c =>
         {
-            c.SwaggerDoc("v1", new OpenApiInfo { Title = "Catalog.API", Version = "v1" });
+            c.SwaggerDoc("v1", new OpenApiInfo { Title = "Basket.API", Version = "v1" });
         });
 
-
-        services.AddAutoMapper(typeof(Startup));
-        services.AddSingleton<ICatalogContext, CatalogContext>();
-        services.AddScoped<IProductRepository, ProductRepository>();
+        services.AddStackExchangeRedisCache(opt =>
+        {
+            opt.Configuration = Configuration.GetValue<string>("CacheSettings:ConnectionString");
+        });
     }
 
     public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
@@ -30,7 +30,7 @@ public class Startup
         {
             app.UseDeveloperExceptionPage();
             app.UseSwagger();
-            app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "Catalog.API v1"));
+            app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "Basket.API v1"));
         }
 
         app.UseRouting();
