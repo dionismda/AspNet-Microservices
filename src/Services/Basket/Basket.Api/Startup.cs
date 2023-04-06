@@ -18,6 +18,8 @@ public class Startup
             c.SwaggerDoc("v1", new OpenApiInfo { Title = "Basket.API", Version = "v1" });
         });
 
+        services.AddAutoMapper(typeof(Startup));
+
         services.AddScoped<IBasketRepository, BasketRepository>();
 
         services.AddStackExchangeRedisCache(opt =>

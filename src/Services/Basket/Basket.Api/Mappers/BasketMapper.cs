@@ -2,7 +2,7 @@
 
 public class BasketMapper : Profile
 {
-    protected BasketMapper()
+    public BasketMapper()
     {
         CreateMap<ShoppingCart, ShoppingCartViewModel>();
         CreateMap<ShoppingCartItem, ShoppingCartItemViewModel>();
