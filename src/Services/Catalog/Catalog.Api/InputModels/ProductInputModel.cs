@@ -1,6 +1,6 @@
 ﻿namespace Catalog.Api.InputModels;
 
-public class ProductInputModel
+public sealed class ProductInputModel
 {
     public string Id { get; set; } 
     public string Name { get; set; }

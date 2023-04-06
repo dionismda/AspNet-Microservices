@@ -4,7 +4,7 @@
 [Route("api/v1/[controller]")]
 [Consumes("application/json")]
 [Produces("application/json")]
-public class BasketController : ControllerBase
+public sealed class BasketController : ControllerBase
 {
     private readonly IBasketRepository _repository;
     private readonly IMapper _mapper;

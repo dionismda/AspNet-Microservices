@@ -4,7 +4,7 @@
 [Route("api/v1/[controller]")]
 [Consumes("application/json")]
 [Produces("application/json")]
-public class CatalogController : ControllerBase
+public sealed class CatalogController : ControllerBase
 {
     private readonly IProductRepository _repository;
     private readonly ILogger<CatalogController> _logger;

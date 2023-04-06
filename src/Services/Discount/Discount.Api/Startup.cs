@@ -11,12 +11,14 @@ public class Startup
 
     public void ConfigureServices(IServiceCollection services)
     {
-
         services.AddControllers();
         services.AddSwaggerGen(c =>
         {
             c.SwaggerDoc("v1", new OpenApiInfo { Title = "Discount.API", Version = "v1" });
         });
+
+        services.AddSingleton<IConnectionDapper, NpgsqlDapperConnection>();
+        services.AddScoped<IDiscountRepository, DiscountRepository>();
     }
 
     public void Configure(IApplicationBuilder app, IWebHostEnvironment env)

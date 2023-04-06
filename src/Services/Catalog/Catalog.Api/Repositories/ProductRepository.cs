@@ -1,6 +1,6 @@
 ﻿namespace Catalog.Api.Repositories;
 
-public class ProductRepository : IProductRepository
+public sealed class ProductRepository : IProductRepository
 {
     private readonly ICatalogContext _context;
 
