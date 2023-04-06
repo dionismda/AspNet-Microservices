@@ -1,6 +1,6 @@
-﻿namespace Basket.Api.Entities;
+﻿namespace Basket.Api.ViewModels;
 
-public class ShoppingCartItem
+public sealed class ShoppingCartItemViewModel
 {
     public int Quantity { get; set; }
     public string Color { get; set; }
