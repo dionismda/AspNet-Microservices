@@ -9,3 +9,4 @@ global using Microsoft.AspNetCore.Mvc;
 global using System.Net;
 global using Basket.Api.ViewModels;
 global using Basket.Api.InputModels;
+global using Basket.Api.Repositories;

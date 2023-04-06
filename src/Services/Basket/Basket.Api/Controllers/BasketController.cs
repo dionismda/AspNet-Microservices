@@ -30,8 +30,14 @@ public class BasketController : ControllerBase
 
     [HttpPost]
     [ProducesResponseType(typeof(ShoppingCartViewModel), (int)HttpStatusCode.OK)]
-    public async Task<ActionResult<ShoppingCartViewModel>> UpdateBasket([FromBody] ShoppingCartInputModel basket)
-        => Ok(_mapper.Map<ShoppingCartViewModel>(await _repository.UpdateBasket(_mapper.Map<ShoppingCart>(basket))));
+    public async Task<ActionResult<ShoppingCartViewModel>> UpdateBasket([FromBody] ShoppingCartInputModel basketInputModel)
+    {
+        var basket = _mapper.Map<ShoppingCart>(basketInputModel);
+
+        var result = await _repository.UpdateBasket(basket);
+
+        return Ok(_mapper.Map<ShoppingCartViewModel>(result));
+    }
 
     [HttpDelete("{userName}", Name = "DeleteBasket")]
     [ProducesResponseType(typeof(void), (int)HttpStatusCode.OK)]
