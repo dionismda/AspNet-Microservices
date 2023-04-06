@@ -13,3 +13,10 @@
 * **Redis database** connection and containerization
 * Consume Discount **Grpc Service** for inter-service sync communication to calculate product final price
 * Publish BasketCheckout Queue with using **MassTransit and RabbitMQ**
+
+#### Discount microservice which includes;
+* ASP.NET **Grpc Server** application
+* Build a Highly Performant **inter-service gRPC Communication** with Basket Microservice
+* Exposing Grpc Services with creating **Protobuf messages**
+* Using **Dapper for micro-orm implementation** to simplify data access and ensure high performance
+* **PostgreSQL database** connection and containerization
