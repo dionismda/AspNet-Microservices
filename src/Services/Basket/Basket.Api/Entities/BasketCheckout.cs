@@ -1,6 +1,6 @@
 ﻿namespace Basket.Api.Entities;
 
-public class BasketCheckout
+public sealed class BasketCheckout
 {
     public string UserName { get; set; }
     public decimal TotalPrice { get; set; }

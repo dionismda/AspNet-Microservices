@@ -1,0 +1,11 @@
+global using Microsoft.OpenApi.Models;
+global using Discount.Api;
+global using Discount.Api.Entities;
+global using Discount.Api.Interfaces;
+global using Dapper;
+global using Npgsql;
+global using System.Data;
+global using Discount.Api.Connections;
+global using Discount.Api.Repositories;
+global using Microsoft.AspNetCore.Mvc;
+global using System.Net;

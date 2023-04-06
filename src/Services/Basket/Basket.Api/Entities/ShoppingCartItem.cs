@@ -1,6 +1,6 @@
 ﻿namespace Basket.Api.Entities;
 
-public class ShoppingCartItem
+public sealed class ShoppingCartItem
 {
     public int Quantity { get; set; }
     public string Color { get; set; }

@@ -1,6 +1,6 @@
 ﻿namespace Basket.Api.InputModels;
 
-public class ShoppingCartItemInputModel
+public sealed class ShoppingCartItemInputModel
 {
     public int Quantity { get; set; }
     public string Color { get; set; }

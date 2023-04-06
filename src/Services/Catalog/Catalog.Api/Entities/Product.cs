@@ -1,6 +1,6 @@
 ﻿namespace Catalog.Api.Entities;
 
-public class Product
+public sealed class Product
 {
     [BsonId]
     [BsonRepresentation(BsonType.ObjectId)]
