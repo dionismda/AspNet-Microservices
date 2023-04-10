@@ -1,4 +1,4 @@
-namespace Discount.API;
+namespace Discount.Grpc;
 
 public class Program
 {

@@ -1,6 +1,6 @@
-﻿namespace Discount.Api.Entities;
+﻿namespace Discount.Api.ViewModels;
 
-public sealed class Coupon
+public sealed class CouponViewModel
 {
     public int Id { get; set; }
     public string ProductName { get; set; }

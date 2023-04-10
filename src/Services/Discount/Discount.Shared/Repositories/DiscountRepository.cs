@@ -1,4 +1,4 @@
-﻿namespace Discount.Api.Repositories;
+﻿namespace Discount.Shared.Repositories;
 
 public sealed class DiscountRepository : IDiscountRepository
 {

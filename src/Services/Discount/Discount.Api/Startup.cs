@@ -19,6 +19,8 @@ public class Startup
 
         services.AddSingleton<IConnectionDapper, NpgsqlDapperConnection>();
         services.AddScoped<IDiscountRepository, DiscountRepository>();
+
+        services.AddAutoMapper(typeof(Startup));
     }
 
     public void Configure(IApplicationBuilder app, IWebHostEnvironment env)

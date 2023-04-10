@@ -1,0 +1,10 @@
+﻿global using Dapper;
+global using Discount.Shared.Entities;
+global using Discount.Shared.Interfaces;
+global using Microsoft.Extensions.Configuration;
+global using Microsoft.Extensions.Logging;
+global using Npgsql;
+global using Polly;
+global using System.Data;
+global using Microsoft.Extensions.DependencyInjection;
+global using Microsoft.Extensions.Hosting;
