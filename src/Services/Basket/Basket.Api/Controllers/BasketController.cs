@@ -8,11 +8,13 @@ public sealed class BasketController : ControllerBase
 {
     private readonly IBasketRepository _repository;
     private readonly IMapper _mapper;
+    private readonly IBasketService _service;
 
-    public BasketController(IBasketRepository repository, IMapper mapper)
+    public BasketController(IBasketRepository repository, IMapper mapper, IBasketService service)
     {
         _repository = repository ?? throw new ArgumentNullException(nameof(repository));
         _mapper = mapper ?? throw new ArgumentNullException(nameof(mapper));
+        _service = service;
     }
 
     [HttpGet("{userName}", Name = "GetBasket")]
@@ -34,7 +36,7 @@ public sealed class BasketController : ControllerBase
     {
         var basket = _mapper.Map<ShoppingCart>(basketInputModel);
 
-        var result = await _repository.UpdateBasket(basket);
+        var result = await _service.UpdateBasket(basket);
 
         return Ok(_mapper.Map<ShoppingCartViewModel>(result));
     }

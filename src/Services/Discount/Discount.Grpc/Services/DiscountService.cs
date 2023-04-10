@@ -21,8 +21,7 @@ public class DiscountService : DiscountProtoService.DiscountProtoServiceBase
 
         _logger.LogInformation("Discount is retrieved for ProductName : {productName}, Amount : {amount}", coupon.ProductName, coupon.Amount);
 
-        var couponModel = _mapper.Map<CouponModel>(coupon);
-        return couponModel;
+        return _mapper.Map<CouponModel>(coupon);
     }
 
     public override async Task<CouponModel> CreateDiscount(CreateDiscountRequest request, ServerCallContext context)
@@ -32,8 +31,7 @@ public class DiscountService : DiscountProtoService.DiscountProtoServiceBase
         await _repository.CreateDiscount(coupon);
         _logger.LogInformation("Discount is successfully created. ProductName : {ProductName}", coupon.ProductName);
 
-        var couponModel = _mapper.Map<CouponModel>(coupon);
-        return couponModel;
+        return _mapper.Map<CouponModel>(coupon);
     }
 
     public override async Task<CouponModel> UpdateDiscount(UpdateDiscountRequest request, ServerCallContext context)
@@ -43,18 +41,15 @@ public class DiscountService : DiscountProtoService.DiscountProtoServiceBase
         await _repository.UpdateDiscount(coupon);
         _logger.LogInformation("Discount is successfully updated. ProductName : {ProductName}", coupon.ProductName);
 
-        var couponModel = _mapper.Map<CouponModel>(coupon);
-        return couponModel;
+        return _mapper.Map<CouponModel>(coupon);
     }
 
     public override async Task<DeleteDiscountResponse> DeleteDiscount(DeleteDiscountRequest request, ServerCallContext context)
     {
         var deleted = await _repository.DeleteDiscount(request.ProductName);
-        var response = new DeleteDiscountResponse
+        return new DeleteDiscountResponse
         {
             Success = deleted
         };
-
-        return response;
     }
 }

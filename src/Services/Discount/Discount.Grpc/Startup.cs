@@ -7,6 +7,7 @@ public class Startup
         services.AddSingleton<IConnectionDapper, NpgsqlDapperConnection>();
         services.AddScoped<IDiscountRepository, DiscountRepository>();
 
+        services.AddAutoMapper(typeof(Startup));
         services.AddGrpc();
     }
 

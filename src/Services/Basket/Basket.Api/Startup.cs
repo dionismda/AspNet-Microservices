@@ -21,6 +21,14 @@ public class Startup
         services.AddAutoMapper(typeof(Startup));
 
         services.AddScoped<IBasketRepository, BasketRepository>();
+        services.AddScoped<IBasketService, BasketService>();
+
+        services.AddGrpcClient<DiscountProtoService.DiscountProtoServiceClient>(opt =>
+        {
+            opt.Address = new Uri(Configuration.GetValue<string>("GrpcSettings:DiscountUrl"));
+        });
+
+        services.AddScoped<DiscountGrpcService>();
 
         services.AddStackExchangeRedisCache(opt =>
         {

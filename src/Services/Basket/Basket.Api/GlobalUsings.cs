@@ -10,3 +10,6 @@ global using System.Net;
 global using Basket.Api.ViewModels;
 global using Basket.Api.InputModels;
 global using Basket.Api.Repositories;
+global using Discount.Grpc.Protos;
+global using Basket.Api.GrpcServices;
+global using Basket.Api.Services;
