@@ -1,0 +1,9 @@
+﻿global using Discount.Shared.Connections;
+global using Discount.Shared.Interfaces;
+global using Discount.Shared.Repositories;
+global using Discount.Shared.Extensions;
+global using AutoMapper;
+global using Discount.Shared.Entities;
+global using Grpc.Core;
+global using Discount.Grpc.Protos;
+global using Discount.Grpc.Services;
