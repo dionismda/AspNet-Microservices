@@ -9,3 +9,8 @@ global using Discount.Api.Connections;
 global using Discount.Api.Repositories;
 global using Microsoft.AspNetCore.Mvc;
 global using System.Net;
+global using Discount.Api.ViewModels;
+global using Discount.Api.InputModels;
+global using AutoMapper;
+global using Polly;
+global using Discount.Api.Extensions;
