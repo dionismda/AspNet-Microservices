@@ -20,3 +20,10 @@
 * Exposing Grpc Services with creating **Protobuf messages**
 * Using **Dapper for micro-orm implementation** to simplify data access and ensure high performance
 * **PostgreSQL database** connection and containerization
+
+#### Ordering Microservice
+* Implementing **DDD, CQRS, and Clean Architecture** with using Best Practices
+* Developing **CQRS with using MediatR, FluentValidation and AutoMapper packages**
+* Consuming **RabbitMQ** BasketCheckout event queue with using **MassTransit-RabbitMQ** Configuration
+* **SqlServer database** connection and containerization
+* Using **Entity Framework Core ORM** and auto migrate to SqlServer when application startup

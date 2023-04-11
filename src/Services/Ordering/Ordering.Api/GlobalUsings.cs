@@ -1,0 +1,17 @@
+global using Microsoft.OpenApi.Models;
+global using Ordering.Api;
+global using Ordering.Application;
+global using Ordering.Infrastructure;
+global using MediatR;
+global using Microsoft.AspNetCore.Mvc;
+global using Ordering.Application.Features.Orders.Commands.CheckoutOrder;
+global using Ordering.Application.Features.Orders.Commands.DeleteOrder;
+global using Ordering.Application.Features.Orders.Commands.UpdateOrder;
+global using Ordering.Application.Features.Orders.Queries.GetOrdersList;
+global using Ordering.Application.Features.Orders.ViewModels;
+global using System.Net;
+global using Microsoft.Data.SqlClient;
+global using Microsoft.EntityFrameworkCore;
+global using Polly;
+global using Ordering.Api.Extensions;
+global using Ordering.Infrastructure.Persistence;
