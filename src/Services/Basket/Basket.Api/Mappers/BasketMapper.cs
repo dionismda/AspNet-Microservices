@@ -9,5 +9,7 @@ public class BasketMapper : Profile
 
         CreateMap<ShoppingCartInputModel, ShoppingCart>();
         CreateMap<ShoppingCartItemInputModel, ShoppingCartItem>();
+
+        CreateMap<BasketCheckout, BasketCheckoutEvent>();
     }
 }

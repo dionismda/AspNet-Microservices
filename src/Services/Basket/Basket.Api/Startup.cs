@@ -1,4 +1,7 @@
-﻿namespace Basket.Api;
+﻿using MassTransit;
+using Microsoft.Extensions.DependencyInjection;
+
+namespace Basket.Api;
 
 public class Startup
 {
@@ -27,13 +30,26 @@ public class Startup
         {
             opt.Address = new Uri(Configuration.GetValue<string>("GrpcSettings:DiscountUrl"));
         });
-
         services.AddScoped<DiscountGrpcService>();
 
         services.AddStackExchangeRedisCache(opt =>
         {
             opt.Configuration = Configuration.GetValue<string>("CacheSettings:ConnectionString");
         });
+
+        services.AddMassTransit(config => {
+            config.UsingRabbitMq((ctx, cfg) => {
+                cfg.Host(Configuration["EventBusSettings:HostAddress"]);
+            });
+        });
+
+        services.AddOptions<MassTransitHostOptions>()
+            .Configure(options =>
+            {
+                options.WaitUntilStarted = true;
+                options.StartTimeout = TimeSpan.FromSeconds(30);
+                options.StopTimeout = TimeSpan.FromMinutes(5);
+            });
     }
 
     public void Configure(IApplicationBuilder app, IWebHostEnvironment env)

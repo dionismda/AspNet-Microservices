@@ -1,6 +1,6 @@
-﻿namespace Basket.Api.Entities;
+﻿namespace EventBus.Messages.Events;
 
-public sealed class BasketCheckout
+public class BasketCheckoutEvent : IntegrationBaseEvent
 {
     public string UserName { get; set; }
     public decimal TotalPrice { get; set; }
