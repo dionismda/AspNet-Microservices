@@ -4,7 +4,16 @@ public class Program
 {
     public static void Main(string[] args)
     {
-        CreateHostBuilder(args).Build().Run();
+        CreateHostBuilder(args)
+            .Build()
+                .MigrateDatabase<OrderContext>((context, services) =>
+                {
+                    var logger = services.GetService<ILogger<OrderContextSeed>>();
+                    OrderContextSeed
+                        .SeedAsync(context, logger)
+                        .Wait();
+                })
+            .Run();
     }
 
     public static IHostBuilder CreateHostBuilder(string[] args) =>

@@ -10,3 +10,7 @@ global using Ordering.Domain.Entities;
 global using Ordering.Application.Contracts.Persistence;
 global using Ordering.Infrastructure.Persistence;
 global using System.Linq.Expressions;
+global using Microsoft.Extensions.Configuration;
+global using Microsoft.Extensions.DependencyInjection;
+global using Ordering.Infrastructure.Mail;
+global using Ordering.Infrastructure.Repositories;

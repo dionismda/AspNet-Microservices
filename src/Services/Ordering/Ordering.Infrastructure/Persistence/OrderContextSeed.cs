@@ -15,8 +15,24 @@ public class OrderContextSeed
     private static IEnumerable<Order> GetPreconfiguredOrders()
     {
         return new List<Order>
-            {
-                new Order() {UserName = "swn", FirstName = "Mehmet", LastName = "Ozkaya", EmailAddress = "ezozkme@gmail.com", AddressLine = "Bahcelievler", Country = "Turkey", TotalPrice = 350 }
+        {
+                new Order()
+                {
+                    UserName = "Teste",
+                    TotalPrice = 350,
+                    FirstName = "Teste",
+                    LastName = "Teste",
+                    EmailAddress = "teste@gmail.com",
+                    AddressLine = "teste",
+                    Country = "teste",
+                    State = "teste",
+                    ZipCode = "13465000",
+                    CardName = "teste",
+                    CardNumber = "123456789",
+                    Expiration = "10",
+                    CVV = "123",
+                    PaymentMethod = 2
+                }
             };
     }
 }

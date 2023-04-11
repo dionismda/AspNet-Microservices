@@ -18,9 +18,9 @@ public class Startup
         });
 
         services.ApplicationInjection();
+        services.InfrastructureInjection(Configuration);
 
     }
-
 
     public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
     {
