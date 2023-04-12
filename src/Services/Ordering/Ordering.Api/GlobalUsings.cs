@@ -15,3 +15,8 @@ global using Microsoft.EntityFrameworkCore;
 global using Polly;
 global using Ordering.Api.Extensions;
 global using Ordering.Infrastructure.Persistence;
+global using AutoMapper;
+global using EventBus.Messages.Events;
+global using MassTransit;
+global using EventBus.Messages.Common;
+global using Ordering.Api.EventBusConsumer;

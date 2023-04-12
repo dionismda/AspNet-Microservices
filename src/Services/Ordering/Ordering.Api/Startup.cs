@@ -20,6 +20,32 @@ public class Startup
         services.ApplicationInjection();
         services.InfrastructureInjection(Configuration);
 
+        services.AddMassTransit(config =>
+        {
+
+            config.AddConsumer<BasketCheckoutConsumer>();
+
+            config.UsingRabbitMq((ctx, cfg) =>
+            {
+                cfg.Host(Configuration["EventBusSettings:HostAddress"]);
+
+                cfg.ReceiveEndpoint(EventBusConstants.BasketCheckoutQueue, c =>
+                {
+                    c.ConfigureConsumer<BasketCheckoutConsumer>(ctx);
+                });
+            });
+        });
+
+        services.AddOptions<MassTransitHostOptions>()
+             .Configure(options =>
+             {
+                 options.WaitUntilStarted = true;
+                 options.StartTimeout = TimeSpan.FromSeconds(30);
+                 options.StopTimeout = TimeSpan.FromMinutes(5);
+             });
+
+        services.AddScoped<BasketCheckoutConsumer>();
+        services.AddAutoMapper(typeof(Startup));
     }
 
     public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
