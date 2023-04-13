@@ -55,8 +55,8 @@ There is a couple of microservices which implemented **e-commerce** modules over
 ## Run The Project
 You will need the following tools:
 
-* [Visual Studio 2019](https://visualstudio.microsoft.com/downloads/)
-* [.Net Core 5 or later](https://dotnet.microsoft.com/download/dotnet-core/5)
+* [Visual Studio 2022](https://visualstudio.microsoft.com/downloads/)
+* [.Net Core 6 or later](https://dotnet.microsoft.com/download/dotnet-core/5)
 * [Docker Desktop](https://www.docker.com/products/docker-desktop)
 
 ### Installing
