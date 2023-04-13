@@ -8,3 +8,5 @@ global using Shopping.Aggregator.Models;
 global using Shopping.Aggregator.Services;
 global using System.Net;
 global using System.Text.Json;
+global using Common.Logging;
+global using Serilog;

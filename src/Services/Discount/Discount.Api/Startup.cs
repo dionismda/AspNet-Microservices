@@ -21,6 +21,9 @@ public class Startup
         services.AddScoped<IDiscountRepository, DiscountRepository>();
 
         services.AddAutoMapper(typeof(Startup));
+
+        services.AddHealthChecks()
+            .AddNpgSql(Configuration["ConnectionStrings:DatabaseSettings"]);
     }
 
     public void Configure(IApplicationBuilder app, IWebHostEnvironment env)

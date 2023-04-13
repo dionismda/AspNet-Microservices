@@ -1,4 +1,6 @@
-﻿namespace Basket.Api;
+﻿using Microsoft.Extensions.Diagnostics.HealthChecks;
+
+namespace Basket.Api;
 
 public class Startup
 {
@@ -49,6 +51,9 @@ public class Startup
                 options.StartTimeout = TimeSpan.FromSeconds(30);
                 options.StopTimeout = TimeSpan.FromMinutes(5);
             });
+
+        services.AddHealthChecks()
+                .AddRedis(Configuration["CacheSettings:ConnectionString"], "Redis Health", HealthStatus.Degraded);
     }
 
     public void Configure(IApplicationBuilder app, IWebHostEnvironment env)

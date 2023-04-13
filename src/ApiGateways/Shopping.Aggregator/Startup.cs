@@ -13,16 +13,19 @@ public class Startup
     {
         services.AddHttpClient<ICatalogService, CatalogService>(c =>
             c.BaseAddress = new Uri(Configuration["ApiSettings:CatalogUrl"]))
+            .AddHttpMessageHandler<LoggingDelegatingHandler>()
             .AddPolicyHandler(GetRetryPolicy())
             .AddPolicyHandler(GetCircuitBreakerPolicy());
 
         services.AddHttpClient<IBasketService, BasketService>(c =>
             c.BaseAddress = new Uri(Configuration["ApiSettings:BasketUrl"]))
+            .AddHttpMessageHandler<LoggingDelegatingHandler>()
             .AddPolicyHandler(GetRetryPolicy())
             .AddPolicyHandler(GetCircuitBreakerPolicy());
 
         services.AddHttpClient<IOrderService, OrderService>(c =>
             c.BaseAddress = new Uri(Configuration["ApiSettings:OrderingUrl"]))
+            .AddHttpMessageHandler<LoggingDelegatingHandler>()
             .AddPolicyHandler(GetRetryPolicy())
             .AddPolicyHandler(GetCircuitBreakerPolicy());
 
@@ -61,7 +64,7 @@ public class Startup
                 sleepDurationProvider: retryAttempt => TimeSpan.FromSeconds(Math.Pow(2, retryAttempt)),
                 onRetry: (exception, retryCount, context) =>
                 {
-                    //Log.Error($"Retry {retryCount} of {context.PolicyKey} at {context.OperationKey}, due to: {exception}.");
+                    Log.Error($"Retry {retryCount} of {context.PolicyKey} at {context.OperationKey}, due to: {exception}.");
                 });
     }
 
