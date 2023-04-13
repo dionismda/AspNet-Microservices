@@ -21,6 +21,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\..\BuildingBlocks\Common.Logging\Common.Logging.csproj" />
     <ProjectReference Include="..\Discount.Shared\Discount.Shared.csproj" />
   </ItemGroup>
 

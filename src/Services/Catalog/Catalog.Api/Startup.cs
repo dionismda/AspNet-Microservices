@@ -1,4 +1,6 @@
-﻿namespace Catalog.API;
+﻿using Microsoft.Extensions.Diagnostics.HealthChecks;
+
+namespace Catalog.API;
 
 public class Startup
 {
@@ -22,6 +24,9 @@ public class Startup
         services.AddAutoMapper(typeof(Startup));
         services.AddSingleton<ICatalogContext, CatalogContext>();
         services.AddScoped<IProductRepository, ProductRepository>();
+
+        services.AddHealthChecks()
+                .AddMongoDb(Configuration["DatabaseSettings:ConnectionString"], "MongoDb Health", HealthStatus.Degraded);
     }
 
     public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
@@ -40,6 +45,11 @@ public class Startup
         app.UseEndpoints(endpoints =>
         {
             endpoints.MapControllers();
+            endpoints.MapHealthChecks("/hc", new HealthCheckOptions()
+            {
+                Predicate = _ => true,
+                ResponseWriter = UIResponseWriter.WriteHealthCheckUIResponse
+            });
         });
     }
 }

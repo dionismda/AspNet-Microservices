@@ -10,3 +10,5 @@ global using Microsoft.AspNetCore.Mvc;
 global using Microsoft.OpenApi.Models;
 global using System.Net;
 global using Discount.Shared.Connections;
+global using HealthChecks.UI.Client;
+global using Microsoft.AspNetCore.Diagnostics.HealthChecks;

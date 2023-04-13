@@ -1,4 +1,6 @@
-﻿namespace Basket.Api;
+﻿using Microsoft.Extensions.Diagnostics.HealthChecks;
+
+namespace Basket.Api;
 
 public class Startup
 {
@@ -27,13 +29,31 @@ public class Startup
         {
             opt.Address = new Uri(Configuration.GetValue<string>("GrpcSettings:DiscountUrl"));
         });
-
         services.AddScoped<DiscountGrpcService>();
 
         services.AddStackExchangeRedisCache(opt =>
         {
             opt.Configuration = Configuration.GetValue<string>("CacheSettings:ConnectionString");
         });
+
+        services.AddMassTransit(config =>
+        {
+            config.UsingRabbitMq((ctx, cfg) =>
+            {
+                cfg.Host(Configuration["EventBusSettings:HostAddress"]);
+            });
+        });
+
+        services.AddOptions<MassTransitHostOptions>()
+            .Configure(options =>
+            {
+                options.WaitUntilStarted = true;
+                options.StartTimeout = TimeSpan.FromSeconds(30);
+                options.StopTimeout = TimeSpan.FromMinutes(5);
+            });
+
+        services.AddHealthChecks()
+                .AddRedis(Configuration["CacheSettings:ConnectionString"], "Redis Health", HealthStatus.Degraded);
     }
 
     public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
@@ -52,6 +72,11 @@ public class Startup
         app.UseEndpoints(endpoints =>
         {
             endpoints.MapControllers();
+            endpoints.MapHealthChecks("/hc", new HealthCheckOptions()
+            {
+                Predicate = _ => true,
+                ResponseWriter = UIResponseWriter.WriteHealthCheckUIResponse
+            });
         });
     }
 }

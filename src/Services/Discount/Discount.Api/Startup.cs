@@ -21,6 +21,9 @@ public class Startup
         services.AddScoped<IDiscountRepository, DiscountRepository>();
 
         services.AddAutoMapper(typeof(Startup));
+
+        services.AddHealthChecks()
+            .AddNpgSql(Configuration["ConnectionStrings:DatabaseSettings"]);
     }
 
     public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
@@ -39,6 +42,11 @@ public class Startup
         app.UseEndpoints(endpoints =>
         {
             endpoints.MapControllers();
+            endpoints.MapHealthChecks("/hc", new HealthCheckOptions()
+            {
+                Predicate = _ => true,
+                ResponseWriter = UIResponseWriter.WriteHealthCheckUIResponse
+            });
         });
     }
 }

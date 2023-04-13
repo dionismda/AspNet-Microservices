@@ -13,3 +13,7 @@ global using Basket.Api.Repositories;
 global using Discount.Grpc.Protos;
 global using Basket.Api.GrpcServices;
 global using Basket.Api.Services;
+global using EventBus.Messages.Events;
+global using MassTransit;
+global using HealthChecks.UI.Client;
+global using Microsoft.AspNetCore.Diagnostics.HealthChecks;
