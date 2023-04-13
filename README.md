@@ -1,5 +1,10 @@
 # AspNet-Microservices
 
+This project is based on the content of the Udemy course Microservices Architecture and Implementation on .NET 5
+, which taught me the knowledge I needed to develop it
+
+There is a couple of microservices which implemented **e-commerce** modules over **Catalog, Basket, Discount** and **Ordering** microservices with **NoSQL (MongoDB, Redis)** and **Relational databases (PostgreSQL, Sql Server)** with communicating over **RabbitMQ Event Driven Communication** and using **Ocelot API Gateway**.
+
 #### Catalog microservice which includes; 
 * ASP.NET Core Web API application 
 * REST API principles, CRUD operations
@@ -41,3 +46,26 @@
 * Sample microservices/containers to reroute through the API Gateways
 * Run multiple different **API Gateway/BFF** container types	
 * The Gateway aggregation pattern in Shopping.Aggregator
+
+#### Docker Compose establishment with all microservices on docker;
+* Containerization of microservices
+* Containerization of databases
+* Override Environment variables
+
+## Run The Project
+You will need the following tools:
+
+* [Visual Studio 2019](https://visualstudio.microsoft.com/downloads/)
+* [.Net Core 5 or later](https://dotnet.microsoft.com/download/dotnet-core/5)
+* [Docker Desktop](https://www.docker.com/products/docker-desktop)
+
+### Installing
+Follow these steps to get your development environment set up: (Before Run Start the Docker Desktop)
+1. Clone the repository
+2. Once Docker for Windows is installed, go to the **Settings > Advanced option**, from the Docker icon in the system tray, to configure the minimum amount of memory and CPU like so:
+* **Memory: 4 GB**
+* CPU: 2
+3. At the root directory which include **docker-compose.yml** files, run below command:
+```csharp
+docker-compose -f docker-compose.yml -f docker-compose.override.yml up -d
+```
