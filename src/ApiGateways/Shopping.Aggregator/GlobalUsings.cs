@@ -1,0 +1,10 @@
+﻿global using Microsoft.AspNetCore.Mvc;
+global using Microsoft.OpenApi.Models;
+global using Polly;
+global using Polly.Extensions.Http;
+global using Shopping.Aggregator.Extensions;
+global using Shopping.Aggregator.Interfaces;
+global using Shopping.Aggregator.Models;
+global using Shopping.Aggregator.Services;
+global using System.Net;
+global using System.Text.Json;

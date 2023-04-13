@@ -1,7 +1,4 @@
-﻿using MassTransit;
-using Microsoft.Extensions.DependencyInjection;
-
-namespace Basket.Api;
+﻿namespace Basket.Api;
 
 public class Startup
 {
@@ -37,8 +34,10 @@ public class Startup
             opt.Configuration = Configuration.GetValue<string>("CacheSettings:ConnectionString");
         });
 
-        services.AddMassTransit(config => {
-            config.UsingRabbitMq((ctx, cfg) => {
+        services.AddMassTransit(config =>
+        {
+            config.UsingRabbitMq((ctx, cfg) =>
+            {
                 cfg.Host(Configuration["EventBusSettings:HostAddress"]);
             });
         });
