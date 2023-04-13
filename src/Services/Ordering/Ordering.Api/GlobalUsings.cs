@@ -20,3 +20,5 @@ global using EventBus.Messages.Events;
 global using MassTransit;
 global using EventBus.Messages.Common;
 global using Ordering.Api.EventBusConsumer;
+global using HealthChecks.UI.Client;
+global using Microsoft.AspNetCore.Diagnostics.HealthChecks;

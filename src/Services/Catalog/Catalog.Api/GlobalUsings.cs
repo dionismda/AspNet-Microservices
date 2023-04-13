@@ -11,3 +11,5 @@ global using System.Net;
 global using AutoMapper;
 global using Catalog.Api.InputModels;
 global using Catalog.Api.ViewModels;
+global using HealthChecks.UI.Client;
+global using Microsoft.AspNetCore.Diagnostics.HealthChecks;
