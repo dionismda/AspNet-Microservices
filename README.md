@@ -27,3 +27,17 @@
 * Consuming **RabbitMQ** BasketCheckout event queue with using **MassTransit-RabbitMQ** Configuration
 * **SqlServer database** connection and containerization
 * Using **Entity Framework Core ORM** and auto migrate to SqlServer when application startup
+
+#### Microservices Communication
+* Sync inter-service **gRPC Communication**
+* Async Microservices Communication with **RabbitMQ Message-Broker Service**
+* Using **RabbitMQ Publish/Subscribe Topic** Exchange Model
+* Using **MassTransit** for abstraction over RabbitMQ Message-Broker system
+* Publishing BasketCheckout event queue from Basket microservices and Subscribing this event from Ordering microservices	
+* Create **RabbitMQ EventBus.Messages library** and add references Microservices
+
+#### API Gateway Ocelot Microservice
+* Implement **API Gateways with Ocelot**
+* Sample microservices/containers to reroute through the API Gateways
+* Run multiple different **API Gateway/BFF** container types	
+* The Gateway aggregation pattern in Shopping.Aggregator
